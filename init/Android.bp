@@ -11,8 +11,8 @@ prebuilt_etc {
 }
 
 prebuilt_etc {
-    name: "init.performance_larry.rc",
-    src: "init.performance_larry.rc",
+    name: "init.performance.rc",
+    src: "init.performance.rc",
     sub_dir: "init",
     vendor: true,
 }
