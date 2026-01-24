@@ -1,1 +1,30 @@
+# --- ALCHEMIST QPR2 TUNING (LARRY / SD695) ---
+on property:sys.boot_completed=1
 
+    # --- CPU GOVERNOR (SCHEDUTIL) ---
+    # Cluster 0 (Little): React fast (500us) but drop slowly (20ms)
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us 20000
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/hispeed_freq 1516800
+
+    # Cluster 1 (Big): React fast (500us) and hold for 40ms
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/down_rate_limit_us 40000
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/hispeed_freq 1804800
+
+    # --- INPUT BOOST (SAFE MODE) ---
+    # No hardcoded frequencies (Save Battery), just a 40ms "wake up" signal
+    write /sys/module/cpu_boost/parameters/input_boost_ms 40
+    # Allow the game/app you are touching to use more power
+    write /proc/sys/kernel/sched_boost 0
+
+    # --- MEMORY TUNING (QPR2 OPTIMIZED) ---
+    # QPR2 is heavy. We need aggressive zRAM to keep apps open.
+    write /proc/sys/vm/swappiness 100
+    write /proc/sys/vm/vfs_cache_pressure 100
+    write /proc/sys/vm/page-cluster 0
+
+    # --- UI PRIORITY ---
+    # Force the active app to the front of the CPU queue
+    write /dev/stune/top-app/schedtune.boost 10
+    write /dev/stune/top-app/schedtune.prefer_idle 1
