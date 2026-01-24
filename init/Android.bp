@@ -12,7 +12,7 @@ prebuilt_etc {
 
 prebuilt_etc {
     name: "init.performance_larry.rc",
-    src: "etc/init.performance_larry.rc",
+    src: "init.performance_larry.rc",
     sub_dir: "init",
     vendor: true,
 }
