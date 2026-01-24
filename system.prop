@@ -1,0 +1,48 @@
+# --- ALCHEMIST DAILY DRIVER (SAFE MODE) ---
+
+# --- UI & SCROLLING SMOOTHNESS ---
+# Keeps the display locked at 120Hz to prevent stutter
+persist.sys.force_120Hz=1
+ro.surface_flinger.use_content_detection_for_refresh_rate=true
+ro.surface_flinger.set_touch_timer_ms=200
+ro.surface_flinger.set_idle_timer_ms=80
+
+# Gives the scrolling thread high priority (FIFO) to stop jitter
+persist.sys.use_fifo_ui=1
+
+# Pre-renders scroll lists so they don't lag when you flick them
+ro.vendor.scroll.pre_draw.enable=true
+ro.vendor.perf.scroll_jank=1
+
+# --- RENDERING (EVOLUTION X OPTIMIZED) ---
+# We REMOVED the forced GLES/OpenGL flags to prevent bootloops.
+# We keep these safe optimization flags instead:
+ro.sf.blurs_are_expensive=1
+ro.surface_flinger.supports_background_blur=1
+debug.sf.disable_client_composition_cache=1
+
+# --- MEMORY & BACKGROUND APPS ---
+# keeps more apps alive in the background (Optimized for 4GB zRAM)
+ro.sys.fw.bg_apps_limit=32
+persist.sys.cached_apps_freezer=enabled
+
+# --- DALVIK / ART COMPILATION ---
+# Use 'speed-profile' which is stable and doesn't cause boot hangs
+pm.dexopt.bg-dexopt=speed-profile
+dalvik.vm.dex2oat-filter=speed-profile
+dalvik.vm.image-dex2oat-filter=speed-profile
+
+# --- FRAME PACING (1.5ms SAFE ZONE) ---
+# These values are relaxed to ensure the phone boots safely
+# but still provide better-than-stock frame timing.
+debug.sf.early_phase_offset_ns=1500000
+debug.sf.early_app_phase_offset_ns=1500000
+debug.sf.high_fps_early_phase_offset_ns=1500000
+debug.sf.high_fps_early_app_phase_offset_ns=1500000
+debug.sf.use_phase_offsets_as_durations=1
+
+# --- NETWORK & SLEEP ---
+# Saves battery when screen is off
+persist.sys.data.fast_dormancy=1
+persist.vendor.radio.add_power_save=1
+pm.sleep_mode=1
