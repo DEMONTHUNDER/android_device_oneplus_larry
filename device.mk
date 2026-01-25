@@ -33,7 +33,7 @@ TARGET_SYSTEM_PROP += $(LOCAL_PATH)/system.prop
 # Init
 PRODUCT_PACKAGES += \
     init.device.rc \
-    init.performance_larry.rc
+    init.performance.rc
 
 # LiveDisplay
 $(call soong_config_set_bool,OPLUS_LINEAGE_LIVEDISPLAY_HAL,ENABLE_SE,false)
