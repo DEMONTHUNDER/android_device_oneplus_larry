@@ -1,4 +1,4 @@
-# Device proprietary files - from CPH2467_14.0.0.1800(EX01) build, unless pinned
+# Device proprietary files - from CPH2467_15.0.0.1800(EX01) build, unless pinned
 
 # Audio ACDB
 odm/etc/acdbdata/MOS/Bluetooth_cal.acdb
@@ -710,6 +710,7 @@ odm/lib64/libavutil.so
 odm/lib64/libarcsoft_supernight.so
 odm/lib64/libc++_shared.so
 odm/lib64/libexif-jpeg-aps.so
+odm/lib64/libextendfile.so
 odm/lib64/libhta.so
 odm/lib64/libhwconfigurationutil.so
 odm/lib64/libhyperlapse.so
@@ -736,6 +737,7 @@ odm/lib64/libsymphony-cpu.so
 odm/lib64/libwatermark_photo.so
 odm/lib64/libyuvwrapper.so
 odm/lib64/vendor.oplus.hardware.cammidasservice-V1-ndk_platform.so
+odm/lib64/vendor.oplus.hardware.olc2-V1-ndk_platform.so
 odm/lib64/vendor.oplus.hardware.orms@1.0.so
 vendor/etc/camera/M_Attribute_AG_BMW_1.1.0.model.hardcode
 vendor/etc/camera/M_Attribute_Gender_Age_1.0.model.hardcode
@@ -952,6 +954,7 @@ odm/bin/hw/vendor.oplus.hardware.biometrics.fingerprint@2.1-service_uff
 odm/bin/init.oplus.fingerprints.sh
 odm/etc/init/vendor.oplus.hardware.biometrics.fingerprint@2.1-service.rc
 odm/etc/vintf/manifest/manifest_oplus_fingerprint.xml
+odm/lib64/libolc_vnd.so
 odm/lib64/android.hardware.biometrics.common-V1-ndk_platform.so
 odm/lib64/vendor.oplus.hardware.commondcs-V1-ndk_platform.so
 odm/lib64/vendor.oplus.hardware.osense.client@1.0.so
