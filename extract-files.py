@@ -26,7 +26,9 @@ blob_fixups: blob_fixups_user_type = {
     'odm/lib64/libAlgoProcess.so': blob_fixup()
         .replace_needed('android.hardware.graphics.common-V1-ndk_platform.so', 'android.hardware.graphics.common-V7-ndk.so'),
     ('odm/lib64/libCOppLceTonemapAPI.so', 'odm/lib64/libaps_frame_registration.so', 'odm/lib64/libYTCommon.so'): blob_fixup()
-        .replace_needed('libstdc++.so', 'libstdc++_vendor.so')
+        .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
+    'vendor/lib64/libmidasserviceintf_aidl.so': blob_fixup()
+        .remove_needed('android.frameworks.stats@1.0.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
