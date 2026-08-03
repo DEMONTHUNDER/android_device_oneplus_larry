@@ -25,8 +25,8 @@ PRODUCT_MANUFACTURER := oneplus
 PRODUCT_GMS_CLIENTID_BASE := android-oppo
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="OP5958L1-user 15 UKQ1.230924.001 T.R4T2.2457248-4-2 release-keys" \
-    BuildFingerprint=OnePlus/CPH2467/OP5958L1:15/UKQ1.230924.001/T.R4T2.2457248-4-2:user/release-keys \
+    BuildDesc="OP5958L1-user 15 UKQ1.230924.001 T.R4T2.24da738-26996-834f2 release-keys" \
+    BuildFingerprint=OnePlus/CPH2467/OP5958L1:15/UKQ1.230924.001/T.R4T2.24da738-26996-834f2:user/release-keys \
     DeviceName=OP5958L1 \
     DeviceProduct=OP5958L1 \
     SystemDevice=OP5958L1 \
