@@ -72,5 +72,35 @@ PRODUCT_SOONG_NAMESPACES += \
 # Touch
 $(call soong_config_set,OPLUS_LINEAGE_TOUCH_HAL,INCLUDE_DIR,$(LOCAL_PATH)/touch/include)
 
+# -----------------------------------------------------------
+# Performance, Dexopt & UI Fluidity Optimization
+# -----------------------------------------------------------
+
+# Pre-compile system UI and core packages to eliminate JIT stutter
+WITH_DEXPREOPT := true
+PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := speed-profile
+DONT_DEXPREOPT_PREBUILTS := false
+
+# System Rendering, SurfaceFlinger Pacing & Dexopt Properties
+PRODUCT_PROPERTY_OVERRIDES += \
+    pm.dexopt.install=speed-profile \
+    pm.dexopt.bg-dexopt=speed \
+    pm.dexopt.boot-after-ota=speed-profile \
+    debug.sf.latch_unsignaled=1 \
+    debug.sf.auto_latch_unsignaled=true \
+    debug.sf.enable_gl_backpressure=0 \
+    debug.sf.multithreaded_present=1 \
+    ro.surface_flinger.set_idle_timer_ms=0 \
+    ro.surface_flinger.use_content_detection_for_refresh_rate=false \
+    ro.hwui.use_vulkan=true \
+    ro.hwui.render_thread=true \
+    ro.hwui.texture_cache_size=72 \
+    ro.hwui.layer_cache_size=48 \
+    ro.hwui.r_buffer_cache_size=8 \
+    persist.sys.app_launch_boost=1 \
+    windowsmgr.max_events_per_sec=240 \
+    sys.sysctl.swappiness=100 \
+    sys.sysctl.vfs_cache_pressure=80
+
 # Inherit proprietary files
 $(call inherit-product-if-exists, vendor/oneplus/larry/larry-vendor.mk)
