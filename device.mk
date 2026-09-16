@@ -81,7 +81,7 @@ WITH_DEXPREOPT := true
 PRODUCT_DEX_PREOPT_DEFAULT_COMPILER_FILTER := speed-profile
 DONT_DEXPREOPT_PREBUILTS := false
 
-# System Rendering, SurfaceFlinger Pacing & Dexopt Properties
+# System Rendering, SurfaceFlinger Pacing, Audio & Dexopt Properties
 PRODUCT_PROPERTY_OVERRIDES += \
     pm.dexopt.install=speed-profile \
     pm.dexopt.bg-dexopt=speed \
@@ -100,7 +100,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.app_launch_boost=1 \
     windowsmgr.max_events_per_sec=240 \
     sys.sysctl.swappiness=100 \
-    sys.sysctl.vfs_cache_pressure=80
+    sys.sysctl.vfs_cache_pressure=80 \
+    af.resampler.quality=7 \
+    audio.deep_buffer.media=true \
+    ro.audio.flinger_standbytime_ms=300 \
+    vendor.camera.aux.packagelist=com.google.android.GoogleCamera,org.codeaurora.snapcam,org.lineageos.aperture \
+    ro.camera.enable_aux_package_list=com.google.android.GoogleCamera,org.codeaurora.snapcam,org.lineageos.aperture
+
+# -----------------------------------------------------------
+# System Debloating (Drop Redundant AOSP Apps)
+# -----------------------------------------------------------
+PRODUCT_PACKAGES_REMOVE += \
+    ExactCalculator \
+    Jelly \
+    PhotoTable
 
 # Inherit proprietary files
 $(call inherit-product-if-exists, vendor/oneplus/larry/larry-vendor.mk)
