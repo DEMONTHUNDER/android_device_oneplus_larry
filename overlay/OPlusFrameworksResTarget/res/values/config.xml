@@ -282,7 +282,7 @@
          hysteresis constraint value is the n-th element of config_ambientDarkeningThresholds.
 
          The (zero-based) index is calculated as follows: (MAX is the largest index of the array)
-         condition                        calculated index
+         condition                         calculated index
          value < level[0]                0
          level[n] <= value < level[n+1]  n+1
          level[MAX] <= value             MAX+1 -->
@@ -405,17 +405,17 @@
     <!-- ------------------------------------------------------------- -->
 
     <!-- Minimum velocity to initiate a fling (lower = registers subtle finger flicks instantly) -->
-    <item name="config_viewMinFlingVelocity" format="integer" type="dimen">150</item>
+    <integer name="config_viewMinFlingVelocity">150</integer>
 
     <!-- Maximum fling velocity tuned for high-refresh 120Hz panels -->
-    <item name="config_viewMaxFlingVelocity" format="integer" type="dimen">24000</item>
+    <integer name="config_viewMaxFlingVelocity">24000</integer>
 
     <!-- Tighter touch detection distance before recognizing scroll motion (cuts input lag) -->
     <dimen name="config_viewConfigurationTouchSlop">8dp</dimen>
 
     <!-- Modern predictive back gesture animations -->
-    <bool name="config_predictive_back_gesture_enabled">true</bool>
+    <bool name="config_enableBackAnimation">true</bool>
 
     <!-- Shorter scrollbar fade duration to keep the rendering pipeline lean -->
-    <item name="config_scrollbarFadeDuration" format="integer" type="integer">250</item>
+    <integer name="config_scrollbarFadeDuration">250</integer>
 </resources>
