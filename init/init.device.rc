@@ -16,3 +16,23 @@ on boot && property:ro.boot.product.hardware.sku=6
 
 on boot && property:ro.boot.product.hardware.sku=14
     enable vendor.nfc_hal_service
+
+# -------------------------------------------------------------
+# Runtime Performance & UI Responsiveness Tweaks
+# -------------------------------------------------------------
+on property:sys.boot_completed=1
+    # Memory & Paging: Fast zRAM usage to prevent flash storage wait
+    write /proc/sys/vm/swappiness 100
+    write /proc/sys/vm/vfs_cache_pressure 80
+    write /proc/sys/vm/dirty_ratio 20
+    write /proc/sys/vm/dirty_background_ratio 5
+    write /proc/sys/vm/stat_interval 10
+
+    # CPU Schedutil Governor: Fast frequency ramp-up for touch events
+    # Little Cluster (Cortex-A55, cores 0-5)
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us 20000
+
+    # Big Cluster (Cortex-A78, cores 6-7)
+    write /sys/devices/system/cpu/cpufreq/policy6/schedutil/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpufreq/policy6/schedutil/down_rate_limit_us 15000
