@@ -45,7 +45,7 @@
          The N entries of this array define N + 1 control points as follows:
          (1-based arrays)
 
-         Point 1:            (0, value[1]):              lux <= 0
+         Point 1:            (0, value[1]):             lux <= 0
          Point 2:     (level[1], value[2]):  0        < lux <= level[1]
          Point 3:     (level[2], value[3]):  level[2] < lux <= level[3]
          ...
@@ -282,7 +282,7 @@
          hysteresis constraint value is the n-th element of config_ambientDarkeningThresholds.
 
          The (zero-based) index is calculated as follows: (MAX is the largest index of the array)
-         condition                         calculated index
+         condition                       calculated index
          value < level[0]                0
          level[n] <= value < level[n+1]  n+1
          level[MAX] <= value             MAX+1 -->
@@ -397,25 +397,6 @@
         <item>200</item> <!--item>sensorRadius</item-->
     </array>
 
-    <!-- Indicates whether device has a power button fingerprint sensor. -->
+<!-- Indicates whether device has a power button fingerprint sensor. -->
     <bool name="config_is_powerbutton_fps" translatable="false">true</bool>
-
-    <!-- ------------------------------------------------------------- -->
-    <!-- UI Physics, Scroll Friction & Gestures                        -->
-    <!-- ------------------------------------------------------------- -->
-
-    <!-- Minimum velocity to initiate a fling (lower = registers subtle finger flicks instantly) -->
-    <integer name="config_viewMinFlingVelocity">150</integer>
-
-    <!-- Maximum fling velocity tuned for high-refresh 120Hz panels -->
-    <integer name="config_viewMaxFlingVelocity">24000</integer>
-
-    <!-- Tighter touch detection distance before recognizing scroll motion (cuts input lag) -->
-    <dimen name="config_viewConfigurationTouchSlop">8dp</dimen>
-
-    <!-- Modern predictive back gesture animations -->
-    <bool name="config_enableBackAnimation">true</bool>
-
-    <!-- Shorter scrollbar fade duration to keep the rendering pipeline lean -->
-    <integer name="config_scrollbarFadeDuration">250</integer>
 </resources>
