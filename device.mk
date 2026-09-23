@@ -91,7 +91,6 @@ PRODUCT_SYSTEM_PROPERTIES += \
     debug.sf.auto_latch_unsignaled=true \
     debug.sf.enable_gl_backpressure=0 \
     debug.sf.multithreaded_present=1 \
-    ro.surface_flinger.set_idle_timer_ms=0 \
     ro.surface_flinger.use_content_detection_for_refresh_rate=false \
     ro.hwui.use_vulkan=true \
     ro.hwui.render_thread=true \
@@ -100,12 +99,15 @@ PRODUCT_SYSTEM_PROPERTIES += \
     ro.hwui.r_buffer_cache_size=8 \
     persist.sys.app_launch_boost=1 \
     windowsmgr.max_events_per_sec=240 \
-    af.resampler.quality=7 \
-    audio.deep_buffer.media=true \
     ro.audio.flinger_standbytime_ms=300 \
     net.ipv4.tcp_congestion_control=bbr \
     net.core.default_qdisc=fq \
-    net.ipv4.tcp_fastopen=3
+    net.ipv4.tcp_fastopen=3 \
+    debug.hwui.use_hint_manager=true \
+    dalvik.vm.dex2oat-threads=4 \
+    persist.sys.perf.topapp_boost=1 \
+    af.resampler.quality=7 \
+    audio.deep_buffer.media=true 
 
 # Inherit proprietary files
 $(call inherit-product-if-exists, vendor/oneplus/larry/larry-vendor.mk)
