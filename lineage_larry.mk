@@ -15,13 +15,6 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 # Inherit from larry device
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
-# Evolution X Build Flags & Custom Branding
-SURFACE_FLINGER_BOOST := true
-
-# Maintainer Identity (Settings -> About Phone)
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.maintainer=DEMONTHUNDER
-
 # Device identifier. This must come after all inclusions.
 PRODUCT_NAME := lineage_larry
 PRODUCT_DEVICE := larry
