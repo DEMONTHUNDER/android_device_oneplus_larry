@@ -16,8 +16,6 @@ $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 $(call inherit-product, $(LOCAL_PATH)/device.mk)
 
 # Evolution X Build Flags & Custom Branding
-EVO_BUILD_TYPE := OFFICIAL
-TARGET_BOOT_ANIMATION_RES := 1080
 SURFACE_FLINGER_BOOST := true
 
 # Maintainer Identity (Settings -> About Phone)
