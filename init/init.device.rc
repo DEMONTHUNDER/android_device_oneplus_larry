@@ -17,38 +17,53 @@ on boot && property:ro.boot.product.hardware.sku=6
 on boot && property:ro.boot.product.hardware.sku=14
     enable vendor.nfc_hal_service
 
+# ============================================================
+# OnePlus Nord CE 3 Lite 5G
+# Snapdragon 695
+# CPU0-5 = LITTLE policy0
+# CPU6-7 = BIG policy6
+# ============================================================
+
+
+# ============================================================
+# VM / Memory
+# ============================================================
+
 on property:sys.boot_completed=1
-    # ==============================
-    # VM / Memory
-    # ==============================
     write /proc/sys/vm/swappiness 60
     write /proc/sys/vm/vfs_cache_pressure 80
     write /proc/sys/vm/dirty_background_ratio 5
     write /proc/sys/vm/dirty_ratio 20
     write /proc/sys/vm/stat_interval 10
 
-    # ==============================
-    # CPUFreq / schedutil
-    # Snapdragon 695
-    # policy0 = CPU0-5
-    # policy6 = CPU6-7
-    # ==============================
 
-    # LITTLE cluster
+# ============================================================
+# CPUFreq / schedutil
+# ============================================================
+
+on property:sys.boot_completed=1
+
+    # LITTLE cluster: CPU 0-5
     write /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us 700
     write /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us 10000
 
-    # BIG cluster
+    # BIG cluster: CPU 6-7
     write /sys/devices/system/cpu/cpufreq/policy6/schedutil/up_rate_limit_us 500
     write /sys/devices/system/cpu/cpufreq/policy6/schedutil/down_rate_limit_us 8000
 
-    # ==============================
-    # UFS / Storage
-    # ==============================
-    write /sys/block/sda/queue/iostats 0
 
-    # ==============================
-    # Scheduler
-    # ==============================
+# ============================================================
+# Kernel scheduler
+# ============================================================
+
+on property:sys.boot_completed=1
     write /proc/sys/kernel/sched_schedstats 0
     write /proc/sys/kernel/perf_cpu_time_max_percent 10
+
+
+# ============================================================
+# Storage
+# ============================================================
+
+on property:sys.boot_completed=1
+    write /sys/block/sda/queue/iostats 0
