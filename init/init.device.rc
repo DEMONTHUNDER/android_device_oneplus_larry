@@ -42,4 +42,3 @@ on property:sys.boot_completed=1
 
     # Reduce Kernel Scheduler Tick Overhead
     write /proc/sys/kernel/sched_schedstats 0
-    write /proc/sys/kernel/perf_cpu_time_max_percent 10
