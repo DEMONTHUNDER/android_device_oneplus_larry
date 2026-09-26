@@ -19,10 +19,10 @@ on boot && property:ro.boot.product.hardware.sku=14
 
 on property:sys.boot_completed=1
     # Memory & Paging: Fast zRAM usage to prevent flash storage wait
-    write /proc/sys/vm/swappiness 100
+    write /proc/sys/vm/swappiness 60
     write /proc/sys/vm/vfs_cache_pressure 80
-    write /proc/sys/vm/dirty_ratio 20
     write /proc/sys/vm/dirty_background_ratio 5
+    write /proc/sys/vm/dirty_ratio 20
     write /proc/sys/vm/stat_interval 10
 
     # CPU Schedutil Governor: Fast frequency ramp-up for touch events
