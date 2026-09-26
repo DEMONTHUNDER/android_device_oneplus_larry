@@ -27,12 +27,12 @@ on property:sys.boot_completed=1
 
     # CPU Schedutil Governor: Fast frequency ramp-up for touch events
     # Little Cluster (cores 0-5)
-    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us 500
-    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us 20000
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us 800
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us 12000
 
     # Big Cluster (cores 6-7)
-    write /sys/devices/system/cpu/cpufreq/policy6/schedutil/up_rate_limit_us 500
-    write /sys/devices/system/cpu/cpufreq/policy6/schedutil/down_rate_limit_us 15000
+    write /sys/devices/system/cpu/cpufreq/policy6/schedutil/up_rate_limit_us 600
+    write /sys/devices/system/cpu/cpufreq/policy6/schedutil/down_rate_limit_us 10000
 
     # Storage I/O Read-Ahead Tuning (Internal UFS)
     write /sys/block/sda/queue/read_ahead_kb 512
